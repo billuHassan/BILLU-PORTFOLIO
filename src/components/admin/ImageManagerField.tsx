@@ -140,7 +140,7 @@ export const ImageManagerField: React.FC<ImageManagerFieldProps> = ({
               <input
                 type="url"
                 placeholder="https://images.unsplash.com/..."
-                value={inputUrl}
+                value={inputUrl || ''}
                 onChange={e => setInputUrl(e.target.value)}
                 className="flex-1 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white"
               />

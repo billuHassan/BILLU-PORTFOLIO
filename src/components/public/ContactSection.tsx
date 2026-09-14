@@ -51,7 +51,7 @@ export const ContactSection: React.FC = () => {
             Let's Build Something Exceptional Together
           </h2>
 
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+          <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
             I am actively seeking entry-level software engineering, systems development, technology consulting, and IT advisory opportunities. Let's discuss your project or team requirements.
           </p>
 
@@ -59,13 +59,13 @@ export const ContactSection: React.FC = () => {
           <div className="space-y-3 pt-2">
             <a
               href={`mailto:${profile.email}`}
-              className="flex items-center gap-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 transition-colors group"
+              className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/70 backdrop-blur-xl border border-slate-700/60 hover:border-cyan-400/60 transition-all group shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
             >
-              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <div className="w-10 h-10 rounded-xl bg-cyan-500/15 text-cyan-400 flex items-center justify-center group-hover:scale-105 transition-transform border border-cyan-500/30">
                 <Mail className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-[11px] font-mono text-slate-400">Direct Email</div>
+                <div className="text-[11px] font-mono text-slate-300">Direct Email</div>
                 <div className="text-sm font-semibold text-white group-hover:text-cyan-300 transition-colors">
                   {profile.email}
                 </div>
@@ -74,25 +74,25 @@ export const ContactSection: React.FC = () => {
 
             <a
               href={`tel:${profile.phone.replace(/\s+/g, '')}`}
-              className="flex items-center gap-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-cyan-500/40 transition-colors group"
+              className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/70 backdrop-blur-xl border border-slate-700/60 hover:border-cyan-400/60 transition-all group shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
             >
-              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center group-hover:scale-105 transition-transform">
+              <div className="w-10 h-10 rounded-xl bg-indigo-500/15 text-indigo-400 flex items-center justify-center group-hover:scale-105 transition-transform border border-indigo-500/30">
                 <Phone className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-[11px] font-mono text-slate-400">Phone & WhatsApp</div>
+                <div className="text-[11px] font-mono text-slate-300">Phone & WhatsApp</div>
                 <div className="text-sm font-semibold text-white group-hover:text-indigo-300 transition-colors">
                   {profile.phone}
                 </div>
               </div>
             </a>
 
-            <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800">
-              <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
+            <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/70 backdrop-blur-xl border border-slate-700/60 shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+              <div className="w-10 h-10 rounded-xl bg-purple-500/15 text-purple-400 flex items-center justify-center border border-purple-500/30">
                 <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-[11px] font-mono text-slate-400">Current Base</div>
+                <div className="text-[11px] font-mono text-slate-300">Current Base</div>
                 <div className="text-sm font-semibold text-white">
                   {profile.location}
                 </div>
@@ -106,7 +106,7 @@ export const ContactSection: React.FC = () => {
               href={profile.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-xs font-mono text-slate-300 hover:text-white flex items-center gap-2 transition-colors"
+              className="px-4 py-2 rounded-xl bg-slate-950/70 backdrop-blur-xl hover:bg-slate-900/80 border border-slate-700/60 text-xs font-mono text-slate-200 hover:text-white flex items-center gap-2 transition-colors shadow-md"
             >
               <Linkedin className="w-4 h-4 text-cyan-400" />
               <span>LinkedIn</span>
@@ -116,7 +116,7 @@ export const ContactSection: React.FC = () => {
               href={profile.github}
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-xs font-mono text-slate-300 hover:text-white flex items-center gap-2 transition-colors"
+              className="px-4 py-2 rounded-xl bg-slate-950/70 backdrop-blur-xl hover:bg-slate-900/80 border border-slate-700/60 text-xs font-mono text-slate-200 hover:text-white flex items-center gap-2 transition-colors shadow-md"
             >
               <Github className="w-4 h-4 text-cyan-400" />
               <span>GitHub</span>
@@ -128,7 +128,7 @@ export const ContactSection: React.FC = () => {
         <div className="lg:col-span-7">
           <form
             onSubmit={handleSubmit}
-            className="p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800/80 backdrop-blur-xl shadow-2xl space-y-5"
+            className="p-6 sm:p-8 rounded-3xl bg-slate-950/70 backdrop-blur-xl border border-slate-700/60 shadow-[0_16px_48px_rgba(0,0,0,0.6)] space-y-5"
           >
             <h3 className="text-xl font-bold text-white font-display">Send a Direct Message</h3>
 
@@ -139,7 +139,7 @@ export const ContactSection: React.FC = () => {
                 type="text"
                 id="hp_field"
                 name="hp_field"
-                value={formData.honeypot}
+                value={formData.honeypot || ''}
                 onChange={e => setFormData({ ...formData, honeypot: e.target.value })}
                 tabIndex={-1}
                 autoComplete="off"
@@ -153,9 +153,9 @@ export const ContactSection: React.FC = () => {
                   type="text"
                   required
                   placeholder="e.g. Alex Wong"
-                  value={formData.name}
+                  value={formData.name || ''}
                   onChange={e => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-cyan-500 focus:outline-none text-sm text-white placeholder:text-slate-600 font-sans"
+                  className="w-full px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/60 focus:border-cyan-400 focus:outline-none text-sm text-white placeholder:text-slate-500 font-sans"
                 />
               </div>
 
@@ -165,9 +165,9 @@ export const ContactSection: React.FC = () => {
                   type="email"
                   required
                   placeholder="alex@company.com"
-                  value={formData.email}
+                  value={formData.email || ''}
                   onChange={e => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-cyan-500 focus:outline-none text-sm text-white placeholder:text-slate-600 font-sans"
+                  className="w-full px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/60 focus:border-cyan-400 focus:outline-none text-sm text-white placeholder:text-slate-500 font-sans"
                 />
               </div>
             </div>
@@ -177,9 +177,9 @@ export const ContactSection: React.FC = () => {
               <input
                 type="text"
                 placeholder="e.g. Software Engineering Opportunity / Advisory Discussion"
-                value={formData.subject}
+                value={formData.subject || ''}
                 onChange={e => setFormData({ ...formData, subject: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-cyan-500 focus:outline-none text-sm text-white placeholder:text-slate-600 font-sans"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/60 focus:border-cyan-400 focus:outline-none text-sm text-white placeholder:text-slate-500 font-sans"
               />
             </div>
 
@@ -189,9 +189,9 @@ export const ContactSection: React.FC = () => {
                 required
                 rows={5}
                 placeholder="Share your inquiry, team background, or technical specifications..."
-                value={formData.message}
+                value={formData.message || ''}
                 onChange={e => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-cyan-500 focus:outline-none text-sm text-white placeholder:text-slate-600 font-sans leading-relaxed"
+                className="w-full px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/60 focus:border-cyan-400 focus:outline-none text-sm text-white placeholder:text-slate-500 font-sans leading-relaxed"
               />
             </div>
 

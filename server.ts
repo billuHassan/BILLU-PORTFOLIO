@@ -430,6 +430,138 @@ app.delete('/api/admin/timeline/:id', requireAdmin, (req, res) => {
   res.json({ success: true });
 });
 
+// Education Management
+app.post('/api/admin/education', requireAdmin, (req, res) => {
+  const newEdu = {
+    id: `edu-${Date.now()}`,
+    degree: req.body.degree || 'Bachelor of Science (Honours) in Software Engineering',
+    institution: req.body.institution || 'Tunku Abdul Rahman University of Management and Technology',
+    location: req.body.location || 'Kuala Lumpur, Malaysia',
+    startDate: req.body.startDate || '2023',
+    endDate: req.body.endDate || '2026',
+    current: req.body.current !== undefined ? Boolean(req.body.current) : true,
+    cgpa: req.body.cgpa || '3.72',
+    maxCgpa: req.body.maxCgpa || '4.00',
+    honors: Array.isArray(req.body.honors) ? req.body.honors : [],
+    courses: Array.isArray(req.body.courses) ? req.body.courses : []
+  };
+  if (!portfolioState.education) portfolioState.education = [];
+  portfolioState.education.unshift(newEdu);
+  savePortfolioData(portfolioState);
+  res.status(201).json({ success: true, education: newEdu });
+});
+
+app.put('/api/admin/education/:id', requireAdmin, (req, res) => {
+  const { id } = req.params;
+  if (!portfolioState.education) portfolioState.education = [];
+  const index = portfolioState.education.findIndex(e => e.id === id);
+  if (index === -1) {
+    return res.status(404).json({ error: 'Education entry not found' });
+  }
+  portfolioState.education[index] = {
+    ...portfolioState.education[index],
+    ...req.body,
+    id
+  };
+  savePortfolioData(portfolioState);
+  res.json({ success: true, education: portfolioState.education[index] });
+});
+
+app.delete('/api/admin/education/:id', requireAdmin, (req, res) => {
+  const { id } = req.params;
+  if (!portfolioState.education) portfolioState.education = [];
+  portfolioState.education = portfolioState.education.filter(e => e.id !== id);
+  savePortfolioData(portfolioState);
+  res.json({ success: true });
+});
+
+// Experience Management
+app.post('/api/admin/experience', requireAdmin, (req, res) => {
+  const newExp = {
+    id: `exp-${Date.now()}`,
+    role: req.body.role || 'Software Engineering Intern',
+    company: req.body.company || 'Tech Company',
+    location: req.body.location || 'Kuala Lumpur, Malaysia',
+    startDate: req.body.startDate || '2025',
+    endDate: req.body.endDate || '2025',
+    current: Boolean(req.body.current),
+    type: req.body.type || 'Internship',
+    description: req.body.description || '',
+    responsibilities: Array.isArray(req.body.responsibilities) ? req.body.responsibilities : [],
+    skills: Array.isArray(req.body.skills) ? req.body.skills : []
+  };
+  if (!portfolioState.experience) portfolioState.experience = [];
+  portfolioState.experience.unshift(newExp);
+  savePortfolioData(portfolioState);
+  res.status(201).json({ success: true, experience: newExp });
+});
+
+app.put('/api/admin/experience/:id', requireAdmin, (req, res) => {
+  const { id } = req.params;
+  if (!portfolioState.experience) portfolioState.experience = [];
+  const index = portfolioState.experience.findIndex(e => e.id === id);
+  if (index === -1) {
+    return res.status(404).json({ error: 'Experience entry not found' });
+  }
+  portfolioState.experience[index] = {
+    ...portfolioState.experience[index],
+    ...req.body,
+    id
+  };
+  savePortfolioData(portfolioState);
+  res.json({ success: true, experience: portfolioState.experience[index] });
+});
+
+app.delete('/api/admin/experience/:id', requireAdmin, (req, res) => {
+  const { id } = req.params;
+  if (!portfolioState.experience) portfolioState.experience = [];
+  portfolioState.experience = portfolioState.experience.filter(e => e.id !== id);
+  savePortfolioData(portfolioState);
+  res.json({ success: true });
+});
+
+// Certifications & Accolades Management
+app.post('/api/admin/certifications', requireAdmin, (req, res) => {
+  const newCert = {
+    id: `cert-${Date.now()}`,
+    title: req.body.title || 'New Certification',
+    issuer: req.body.issuer || 'Issuing Authority',
+    date: req.body.date || '2026',
+    year: req.body.year || '2026',
+    credentialUrl: req.body.credentialUrl || '',
+    badge: req.body.badge || '',
+    description: req.body.description || ''
+  };
+  if (!portfolioState.certifications) portfolioState.certifications = [];
+  portfolioState.certifications.unshift(newCert);
+  savePortfolioData(portfolioState);
+  res.status(201).json({ success: true, certification: newCert });
+});
+
+app.put('/api/admin/certifications/:id', requireAdmin, (req, res) => {
+  const { id } = req.params;
+  if (!portfolioState.certifications) portfolioState.certifications = [];
+  const index = portfolioState.certifications.findIndex(c => c.id === id);
+  if (index === -1) {
+    return res.status(404).json({ error: 'Certification not found' });
+  }
+  portfolioState.certifications[index] = {
+    ...portfolioState.certifications[index],
+    ...req.body,
+    id
+  };
+  savePortfolioData(portfolioState);
+  res.json({ success: true, certification: portfolioState.certifications[index] });
+});
+
+app.delete('/api/admin/certifications/:id', requireAdmin, (req, res) => {
+  const { id } = req.params;
+  if (!portfolioState.certifications) portfolioState.certifications = [];
+  portfolioState.certifications = portfolioState.certifications.filter(c => c.id !== id);
+  savePortfolioData(portfolioState);
+  res.json({ success: true });
+});
+
 // Posts / Articles / Lab Experiments
 app.post('/api/admin/posts', requireAdmin, (req, res) => {
   const newPost = {

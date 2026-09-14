@@ -204,7 +204,7 @@ export const ProjectGalleryManager: React.FC<ProjectGalleryManagerProps> = ({
         <input
           type="url"
           placeholder="Or paste external screenshot URL..."
-          value={urlInput}
+          value={urlInput || ''}
           onChange={e => setUrlInput(e.target.value)}
           className="flex-1 px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white placeholder-slate-600"
         />

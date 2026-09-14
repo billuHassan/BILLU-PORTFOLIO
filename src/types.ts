@@ -12,13 +12,32 @@ export interface Profile {
   phone: string;
   linkedin: string;
   github: string;
+  twitter?: string;
+  calendly?: string;
   avatarUrl: string;
   bannerUrl?: string;
   status: string;
   currentFocus: string;
   goals: string;
   interests: string[];
-  languages: { name: string; level: string }[];
+  languages: { name: string; level: string; proficiency?: number }[];
+  university?: string;
+  candidateDegree?: string;
+  cgpa?: string;
+  awardHighlight?: string;
+  graduationDate?: string;
+  pillar1?: string;
+  pillar2?: string;
+  pillar3?: string;
+  pillar4?: string;
+  aboutHeadline?: string;
+  aboutSubheadline?: string;
+  aboutPillar1Title?: string;
+  aboutPillar1Desc?: string;
+  aboutPillar2Title?: string;
+  aboutPillar2Desc?: string;
+  aboutPillar3Title?: string;
+  aboutPillar3Desc?: string;
 }
 
 export interface Project {
@@ -79,6 +98,8 @@ export interface TimelineEvent {
   badgeUrl?: string;
 }
 
+export type Milestone = TimelineEvent;
+
 export interface Experience {
   id: string;
   role: string;
@@ -87,7 +108,8 @@ export interface Experience {
   startDate: string;
   endDate: string;
   current: boolean;
-  type: string;
+  type?: string;
+  description?: string;
   responsibilities: string[];
   skills: string[];
 }

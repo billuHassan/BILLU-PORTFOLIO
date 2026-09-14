@@ -13,15 +13,35 @@ export const initialPortfolioData: PortfolioData = {
     linkedin: "https://linkedin.com/in/bilal-hassan-mussa-431a9439b",
     github: "https://github.com/billuHassan",
     avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+    bannerUrl: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1600&q=80",
     status: "Available for Full-time Roles & Engineering Opportunities",
     currentFocus: "Next-gen Interactive 3D Web, AI Systems, Enterprise Risk Governance",
     goals: "Deliver high-impact software engineering solutions and advance toward technical leadership in full-stack architecture and tech consulting.",
     interests: ["Interactive 3D Web Graphics", "Cloud Governance & Risk", "Generative AI Architectures", "Mobile App Ecosystems", "Open Source Innovation"],
     languages: [
-      { name: "English", level: "Professional Working Proficiency" },
-      { name: "Swahili", level: "Native / Bilingual" },
-      { name: "Arabic", level: "Professional Working Proficiency" }
-    ]
+      { name: "English", level: "Professional Working Proficiency", proficiency: 90 },
+      { name: "Swahili", level: "Native / Bilingual", proficiency: 100 },
+      { name: "Arabic", level: "Professional Working Proficiency", proficiency: 80 }
+    ],
+    university: "Tunku Abdul Rahman University of Management and Technology (TAR UMT)",
+    candidateDegree: "Software Engineering Candidate",
+    cgpa: "3.72",
+    awardHighlight: "Top 50 GAP Award",
+    graduationDate: "Nov 2026",
+    pillar1: "Tech Advisory & Risk Audit (Axcelasia)",
+    pillar2: "Full-Stack & 3D WebGL Architectures",
+    pillar3: "TAR UMT Software Eng • 3.72 CGPA",
+    pillar4: "Kuala Lumpur, Malaysia",
+    aboutHeadline: "Bridging Software Engineering with Technology Governance",
+    aboutSubheadline: "I fuse modern full-stack development, 3D computer graphics, and technology advisory to architect resilient, high-security software systems.",
+    aboutPillar1Title: "Tech Advisory & Audit",
+    aboutPillar1Desc: "Evaluating internal IT controls, modeling enterprise risk, and presenting governance findings to leadership.",
+    aboutPillar2Title: "Full-Stack & Mobile",
+    aboutPillar2Desc: "Developing robust platforms with Flutter, Firebase, React, Node.js, and strict RBAC governance.",
+    aboutPillar3Title: "Interactive 3D Web",
+    aboutPillar3Desc: "Crafting spatial WebGL/Three.js data explorers, interactive architectural topology, and dynamic canvases.",
+    twitter: "",
+    calendly: ""
   },
   projects: [
     {

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { PortfolioData, Project, Skill, TimelineEvent, Post, MediaAsset, ContactMessage, SiteSettings, Profile, CosmicTheme, PageTab } from '../types';
+import { PortfolioData, Project, Skill, TimelineEvent, Post, MediaAsset, ContactMessage, SiteSettings, Profile, CosmicTheme, PageTab, Education, Experience, Certification } from '../types';
 import { initialPortfolioData } from '../data/initialPortfolio';
 
 interface PortfolioContextType {
@@ -23,6 +23,12 @@ interface PortfolioContextType {
   loginAdmin: (password: string) => Promise<{ success: boolean; error?: string }>;
   logoutAdmin: () => void;
   updateProfile: (profile: Partial<Profile>) => Promise<boolean>;
+  saveEducation: (edu: Partial<Education>, id?: string) => Promise<boolean>;
+  deleteEducation: (id: string) => Promise<boolean>;
+  saveExperience: (exp: Partial<Experience>, id?: string) => Promise<boolean>;
+  deleteExperience: (id: string) => Promise<boolean>;
+  saveCertification: (cert: Partial<Certification>, id?: string) => Promise<boolean>;
+  deleteCertification: (id: string) => Promise<boolean>;
   saveProject: (project: Partial<Project>, id?: string) => Promise<boolean>;
   deleteProject: (id: string) => Promise<boolean>;
   saveSkill: (skill: Partial<Skill>, id?: string) => Promise<boolean>;
@@ -190,6 +196,157 @@ export const PortfolioProvider: React.FC<{ children: ReactNode }> = ({ children 
       } catch (e) {
         console.error('Failed to sync profile update:', e);
       }
+    }
+    return true;
+  };
+
+  // Education CRUD
+  const saveEducation = async (edu: Partial<Education>, id?: string) => {
+    let updatedEdu: Education[];
+    if (id) {
+      updatedEdu = (data.education || []).map(e => (e.id === id ? ({ ...e, ...edu } as Education) : e));
+    } else {
+      const newEdu: Education = {
+        id: `edu-${Date.now()}`,
+        degree: edu.degree || 'Bachelor of Science (Honours) in Software Engineering',
+        institution: edu.institution || 'Tunku Abdul Rahman University of Management and Technology',
+        location: edu.location || 'Kuala Lumpur, Malaysia',
+        cgpa: edu.cgpa || '3.72',
+        startDate: edu.startDate || '2023',
+        endDate: edu.endDate || '2026',
+        honors: edu.honors || ['Dean\'s List Honor']
+      };
+      updatedEdu = [newEdu, ...(data.education || [])];
+    }
+    setData(prev => ({ ...prev, education: updatedEdu }));
+
+    if (adminToken) {
+      try {
+        const url = id ? `/api/admin/education/${id}` : '/api/admin/education';
+        const method = id ? 'PUT' : 'POST';
+        await fetch(url, {
+          method,
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${adminToken}`
+          },
+          body: JSON.stringify(edu)
+        });
+      } catch (e) {}
+    }
+    return true;
+  };
+
+  const deleteEducation = async (id: string) => {
+    setData(prev => ({ ...prev, education: (prev.education || []).filter(e => e.id !== id) }));
+    if (adminToken) {
+      try {
+        await fetch(`/api/admin/education/${id}`, {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${adminToken}` }
+        });
+      } catch (e) {}
+    }
+    return true;
+  };
+
+  // Experience CRUD
+  const saveExperience = async (exp: Partial<Experience>, id?: string) => {
+    let updatedExp: Experience[];
+    if (id) {
+      updatedExp = (data.experience || []).map(e => (e.id === id ? ({ ...e, ...exp } as Experience) : e));
+    } else {
+      const newExp: Experience = {
+        id: `exp-${Date.now()}`,
+        role: exp.role || 'Software Engineering Intern',
+        company: exp.company || 'Tech Company',
+        location: exp.location || 'Kuala Lumpur, Malaysia',
+        startDate: exp.startDate || '2025',
+        endDate: exp.endDate || '2025',
+        current: Boolean(exp.current),
+        type: exp.type || 'Internship',
+        responsibilities: exp.responsibilities || [],
+        skills: exp.skills || []
+      };
+      updatedExp = [newExp, ...(data.experience || [])];
+    }
+    setData(prev => ({ ...prev, experience: updatedExp }));
+
+    if (adminToken) {
+      try {
+        const url = id ? `/api/admin/experience/${id}` : '/api/admin/experience';
+        const method = id ? 'PUT' : 'POST';
+        await fetch(url, {
+          method,
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${adminToken}`
+          },
+          body: JSON.stringify(exp)
+        });
+      } catch (e) {}
+    }
+    return true;
+  };
+
+  const deleteExperience = async (id: string) => {
+    setData(prev => ({ ...prev, experience: (prev.experience || []).filter(e => e.id !== id) }));
+    if (adminToken) {
+      try {
+        await fetch(`/api/admin/experience/${id}`, {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${adminToken}` }
+        });
+      } catch (e) {}
+    }
+    return true;
+  };
+
+  // Certifications CRUD
+  const saveCertification = async (cert: Partial<Certification>, id?: string) => {
+    let updatedCerts: Certification[];
+    if (id) {
+      updatedCerts = (data.certifications || []).map(c => (c.id === id ? ({ ...c, ...cert } as Certification) : c));
+    } else {
+      const newCert: Certification = {
+        id: `cert-${Date.now()}`,
+        title: cert.title || 'New Certification',
+        issuer: cert.issuer || 'Issuing Authority',
+        year: cert.year || '2026',
+        description: cert.description || '',
+        badge: cert.badge || '',
+        verificationUrl: cert.verificationUrl || ''
+      };
+      updatedCerts = [newCert, ...(data.certifications || [])];
+    }
+    setData(prev => ({ ...prev, certifications: updatedCerts }));
+
+    if (adminToken) {
+      try {
+        const url = id ? `/api/admin/certifications/${id}` : '/api/admin/certifications';
+        const method = id ? 'PUT' : 'POST';
+        await fetch(url, {
+          method,
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${adminToken}`
+          },
+          body: JSON.stringify(cert)
+        });
+      } catch (e) {}
+    }
+    return true;
+  };
+
+  const deleteCertification = async (id: string) => {
+    setData(prev => ({ ...prev, certifications: (prev.certifications || []).filter(c => c.id !== id) }));
+    if (adminToken) {
+      try {
+        await fetch(`/api/admin/certifications/${id}`, {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${adminToken}` }
+        });
+      } catch (e) {}
     }
     return true;
   };
@@ -588,6 +745,12 @@ export const PortfolioProvider: React.FC<{ children: ReactNode }> = ({ children 
         loginAdmin,
         logoutAdmin,
         updateProfile,
+        saveEducation,
+        deleteEducation,
+        saveExperience,
+        deleteExperience,
+        saveCertification,
+        deleteCertification,
         saveProject,
         deleteProject,
         saveSkill,

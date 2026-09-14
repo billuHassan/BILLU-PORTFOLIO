@@ -47,7 +47,7 @@ export const ResumeSection: React.FC = () => {
       </div>
 
       {/* Structured Resume Document Viewport */}
-      <div className="rounded-3xl bg-slate-900/80 border border-slate-700/80 p-6 sm:p-12 shadow-2xl backdrop-blur-xl text-slate-200 space-y-10 print:bg-white print:text-black print:p-0 print:border-none print:shadow-none">
+      <div className="rounded-3xl bg-slate-950/60 backdrop-blur-xl border border-slate-700/60 p-6 sm:p-12 shadow-[0_8px_32px_rgba(0,0,0,0.5)] text-slate-200 space-y-10 print:bg-white print:text-black print:p-0 print:border-none print:shadow-none">
         {/* Document Header */}
         <div className="border-b border-slate-800 pb-8 space-y-3">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -56,7 +56,7 @@ export const ResumeSection: React.FC = () => {
                 {profile.name}
               </h1>
               <p className="text-base font-semibold text-cyan-400 print:text-blue-700">
-                Software Engineering Graduate Candidate & Tech Advisory Intern
+                {profile.candidateDegree || profile.title}
               </p>
             </div>
             <div className="text-xs font-mono text-slate-400 text-right print:text-slate-700 space-y-1">
