@@ -34,7 +34,7 @@ export const SkillsConstellation: React.FC = () => {
       <div className="max-w-3xl mb-12">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-xs font-mono text-cyan-300 mb-3">
           <Cpu className="w-3.5 h-3.5" />
-          <span>Core Engineering Competencies & Constellation</span>
+          <span>Core Engineering Competencies & Architecture Matrix</span>
         </div>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display tracking-tight">
           Technical Skills & Architecture Disciplines
@@ -51,7 +51,7 @@ export const SkillsConstellation: React.FC = () => {
           className={`px-4 py-2 rounded-xl text-xs font-mono transition-all cursor-pointer ${
             activeCategory === 'all'
               ? 'bg-cyan-500 text-slate-950 font-bold shadow-[0_0_15px_rgba(56,189,248,0.3)]'
-              : 'bg-slate-950/70 backdrop-blur-xl text-slate-200 hover:text-white hover:bg-slate-900/80 border border-slate-700/60'
+              : 'bg-slate-900/70 backdrop-blur-xl text-slate-200 hover:text-white hover:bg-slate-800 border border-slate-700/60'
           }`}
         >
           All Domains ({data.skills.length})
@@ -67,7 +67,7 @@ export const SkillsConstellation: React.FC = () => {
               className={`px-4 py-2 rounded-xl text-xs font-mono transition-all flex items-center gap-2 cursor-pointer ${
                 activeCategory === cat.id
                   ? 'bg-cyan-500 text-slate-950 font-bold shadow-[0_0_15px_rgba(56,189,248,0.3)]'
-                  : 'bg-slate-950/70 backdrop-blur-xl text-slate-200 hover:text-white hover:bg-slate-900/80 border border-slate-700/60'
+                  : 'bg-slate-900/70 backdrop-blur-xl text-slate-200 hover:text-white hover:bg-slate-800 border border-slate-700/60'
               }`}
             >
               <Icon className="w-3.5 h-3.5" />
@@ -88,7 +88,7 @@ export const SkillsConstellation: React.FC = () => {
             <div
               key={skill.id}
               onClick={() => setSelectedSkill(skill)}
-              className="p-5 rounded-2xl bg-slate-950/70 backdrop-blur-xl border border-slate-700/60 hover:border-cyan-400/60 transition-all duration-200 group hover:-translate-y-0.5 cursor-pointer shadow-[0_8px_32px_rgba(0,0,0,0.5)] hover:shadow-[0_0_25px_rgba(56,189,248,0.2)] flex flex-col justify-between"
+              className="p-5 rounded-2xl bg-slate-900/65 backdrop-blur-xl border border-slate-700/60 hover:border-cyan-400/60 transition-all duration-200 group hover:-translate-y-0.5 cursor-pointer shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:shadow-[0_0_25px_rgba(56,189,248,0.2)] flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-start justify-between mb-3">
@@ -149,8 +149,8 @@ export const SkillsConstellation: React.FC = () => {
 
       {/* Skill Detail Modal (Triggered on Tap/Click) */}
       {selectedSkill && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in">
-          <div className="relative w-full max-w-lg rounded-3xl bg-slate-950/85 backdrop-blur-2xl border border-cyan-500/50 p-6 md:p-8 shadow-[0_16px_48px_rgba(0,0,0,0.8)] space-y-6 text-left ring-1 ring-cyan-500/30">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-md animate-in fade-in">
+          <div className="relative w-full max-w-lg rounded-3xl bg-slate-900/90 backdrop-blur-2xl border border-cyan-500/50 p-6 md:p-8 shadow-[0_16px_48px_rgba(0,0,0,0.6)] space-y-6 text-left ring-1 ring-cyan-500/30">
             {/* Close Button */}
             <button
               onClick={() => setSelectedSkill(null)}

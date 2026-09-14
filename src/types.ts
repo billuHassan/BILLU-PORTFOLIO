@@ -1,5 +1,5 @@
 export type CosmicTheme = 'cyan' | 'amethyst' | 'solar' | 'aurora';
-export type PageTab = 'universe' | 'projects' | 'journey' | 'all';
+export type PageTab = 'universe' | 'projects' | 'sdlc' | 'journey' | 'contact' | 'all';
 
 export interface Profile {
   name: string;

@@ -1,156 +1,115 @@
 import React from 'react';
 import { usePortfolio } from '../../context/PortfolioContext';
-import { Shield, BookOpen, Compass, CheckCircle2, GraduationCap, Building2, Languages, Globe } from 'lucide-react';
+import { Shield, BookOpen, Layers, CheckCircle2, GraduationCap, Building2, Languages, Cpu, Terminal, ArrowRight, GitCommit } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
-  const { data } = usePortfolio();
-  const { profile, education, experience } = data;
+  const { data, setActivePage } = usePortfolio();
+  const { profile } = data;
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-800">
+    <section id="about" className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Header */}
-      <div className="max-w-3xl mb-14">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-xs font-mono text-cyan-300 mb-3">
-          <GraduationCap className="w-3.5 h-3.5" />
-          <span>About {profile.name} & Core Track</span>
+      <div className="max-w-3xl mb-8">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-50 border border-sky-200 text-xs font-mono text-sky-700 mb-3 shadow-sm">
+          <Terminal className="w-3.5 h-3.5" />
+          <span>Engineering Philosophy & Background</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display tracking-tight">
-          {profile.aboutHeadline || "Bridging Software Engineering with Technology Governance"}
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-display tracking-tight">
+          {profile.aboutHeadline || "Bridging Software Engineering with Systems Governance"}
         </h2>
-        <p className="mt-3 text-slate-200 text-base sm:text-lg leading-relaxed">
-          {profile.aboutSubheadline || "I fuse modern full-stack development, 3D computer graphics, and technology advisory to architect resilient, high-security software systems."}
+        <p className="mt-2 text-slate-600 text-base leading-relaxed">
+          {profile.aboutSubheadline || "Fusing modern full-stack development, interactive 3D computing, and technology advisory to architect resilient, auditable software systems."}
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Left Column: Narrative and statement */}
-        <div className="lg:col-span-7 space-y-6">
-          <div className="bg-slate-950/50 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-6 sm:p-8 shadow-[0_8px_32px_rgba(0,0,0,0.4)] space-y-4">
-            <h3 className="text-xl font-bold text-white font-display">Biography</h3>
-            <p className="text-slate-100 leading-relaxed text-sm sm:text-base">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        {/* Left Column: Biography Narrative */}
+        <div className="lg:col-span-7 bg-white/90 backdrop-blur-xl border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm flex flex-col justify-between space-y-6">
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold text-slate-900 font-display flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-sky-600" />
+              <span>Professional Narrative</span>
+            </h3>
+            <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
               {profile.bio}
             </p>
-            <p className="text-slate-200 leading-relaxed text-sm sm:text-base">
+            <p className="text-slate-600 leading-relaxed text-sm">
               {profile.personalStatement}
             </p>
           </div>
 
-          {/* Pillars of Focus */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="p-5 rounded-2xl bg-slate-950/50 backdrop-blur-xl border border-slate-700/60 hover:border-cyan-400/50 transition-colors shadow-lg">
-              <div className="w-10 h-10 rounded-xl bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 flex items-center justify-center mb-3">
-                <Shield className="w-5 h-5" />
+          {/* Three Specialization Pillars */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-slate-100">
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+              <div className="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center">
+                <Shield className="w-4 h-4" />
               </div>
-              <h4 className="text-sm font-bold text-white mb-1">{profile.aboutPillar1Title || "Tech Advisory & Audit"}</h4>
-              <p className="text-xs text-slate-200 leading-relaxed">
-                {profile.aboutPillar1Desc || "Evaluating internal IT controls, modeling enterprise risk, and presenting governance findings to leadership."}
+              <h4 className="text-xs font-bold text-slate-900">{profile.aboutPillar1Title || "Tech Advisory & Audit"}</h4>
+              <p className="text-[11px] text-slate-600 leading-relaxed">
+                Internal IT controls, compliance models, and technology advisory at Axcelasia.
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-950/50 backdrop-blur-xl border border-slate-700/60 hover:border-indigo-400/50 transition-colors shadow-lg">
-              <div className="w-10 h-10 rounded-xl bg-indigo-500/15 text-indigo-400 border border-indigo-500/30 flex items-center justify-center mb-3">
-                <Compass className="w-5 h-5" />
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+              <div className="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center">
+                <Layers className="w-4 h-4" />
               </div>
-              <h4 className="text-sm font-bold text-white mb-1">{profile.aboutPillar2Title || "Full-Stack & Mobile"}</h4>
-              <p className="text-xs text-slate-200 leading-relaxed">
-                {profile.aboutPillar2Desc || "Developing robust platforms with Flutter, Firebase, React, Node.js, and strict RBAC governance."}
+              <h4 className="text-xs font-bold text-slate-900">{profile.aboutPillar2Title || "Full-Stack & Cloud"}</h4>
+              <p className="text-[11px] text-slate-600 leading-relaxed">
+                React, TypeScript, Node.js, and Docker microservices with strict type safety.
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-slate-950/50 backdrop-blur-xl border border-slate-700/60 hover:border-purple-400/50 transition-colors shadow-lg">
-              <div className="w-10 h-10 rounded-xl bg-purple-500/15 text-purple-400 border border-purple-500/30 flex items-center justify-center mb-3">
-                <Globe className="w-5 h-5" />
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1.5">
+              <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center">
+                <Cpu className="w-4 h-4" />
               </div>
-              <h4 className="text-sm font-bold text-white mb-1">{profile.aboutPillar3Title || "Interactive 3D Web"}</h4>
-              <p className="text-xs text-slate-200 leading-relaxed">
-                {profile.aboutPillar3Desc || "Crafting spatial WebGL/Three.js data explorers, interactive architectural topology, and dynamic canvases."}
+              <h4 className="text-xs font-bold text-slate-900">{profile.aboutPillar3Title || "Interactive 3D Web"}</h4>
+              <p className="text-[11px] text-slate-600 leading-relaxed">
+                Spatial WebGL, Three.js shaders, and interactive system topology visualizers.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Right Column: Academic & Professional Status */}
-        <div className="lg:col-span-5 space-y-6">
-          {/* Education Card */}
-          <div className="bg-slate-950/50 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-6 shadow-[0_8px_32px_rgba(0,0,0,0.4)] space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 flex items-center justify-center">
-                <GraduationCap className="w-5 h-5" />
+        {/* Right Column: Active Developer Console / System Environment */}
+        <div className="lg:col-span-5 bg-slate-900 text-slate-100 rounded-3xl p-6 sm:p-7 shadow-md border border-slate-800 flex flex-col justify-between font-mono text-xs">
+          <div className="space-y-4">
+            {/* Terminal Header */}
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <div className="flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-rose-500" />
+                <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                <span className="text-[11px] text-slate-400 ml-1">developer_profile.json</span>
               </div>
-              <div>
-                <h4 className="text-base font-bold text-white">Higher Education</h4>
-                <p className="text-xs font-mono text-cyan-300 font-semibold">{profile.university || 'TAR UMT'}</p>
-              </div>
+              <span className="text-[10px] text-emerald-400 font-semibold">● ONLINE</span>
             </div>
 
-            {education.map(edu => (
-              <div key={edu.id} className="pt-3 border-t border-slate-800 space-y-2">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h5 className="text-sm font-bold text-white">{edu.degree}</h5>
-                    <p className="text-xs text-slate-300 font-medium">{edu.institution}</p>
-                  </div>
-                  <span className="px-2.5 py-1 rounded-lg bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 text-xs font-mono font-bold">
-                    CGPA {edu.cgpa}
-                  </span>
-                </div>
-
-                <div className="space-y-1 pt-1">
-                  {edu.honors.map(honor => (
-                    <div key={honor} className="flex items-center gap-2 text-xs text-slate-200">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                      <span>{honor}</span>
-                    </div>
-                  ))}
-                </div>
+            {/* JSON Code Snippet */}
+            <div className="space-y-1.5 text-[11px] text-slate-300 leading-relaxed py-1">
+              <div><span className="text-slate-500">"candidate":</span> <span className="text-emerald-400">"{profile.name}"</span>,</div>
+              <div><span className="text-slate-500">"degree":</span> <span className="text-cyan-400">"BSc (Hons) Software Engineering"</span>,</div>
+              <div><span className="text-slate-500">"institution":</span> <span className="text-cyan-400">"TAR UMT (Kuala Lumpur)"</span>,</div>
+              <div><span className="text-slate-500">"current_focus":</span> <span className="text-amber-300">"{profile.currentFocus || 'Cloud-Native Architecture & IT Governance'}"</span>,</div>
+              <div><span className="text-slate-500">"primary_stack":</span> [</div>
+              <div className="pl-4 text-slate-300">
+                <span className="text-indigo-400">"TypeScript"</span>, <span className="text-indigo-400">"React"</span>, <span className="text-indigo-400">"C++"</span>, <span className="text-indigo-400">"Docker"</span>, <span className="text-indigo-400">"Three.js"</span>
               </div>
-            ))}
+              <div>],</div>
+              <div><span className="text-slate-500">"sdlc_practices":</span> <span className="text-sky-300">{'["CI/CD Automated", "Unit Test Coverage > 95%", "Clean Code"]'}</span></div>
+            </div>
           </div>
 
-          {/* Current Experience Card */}
-          <div className="bg-slate-950/50 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-6 shadow-[0_8px_32px_rgba(0,0,0,0.4)] space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-indigo-500/15 text-indigo-400 border border-indigo-500/30 flex items-center justify-center">
-                <Building2 className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="text-base font-bold text-white">Current Industry Practice</h4>
-                <p className="text-xs font-mono text-indigo-300 font-semibold">Axcelasia Sdn Bhd</p>
-              </div>
-            </div>
-
-            {experience.map(exp => (
-              <div key={exp.id} className="pt-3 border-t border-slate-800 space-y-2">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h5 className="text-sm font-bold text-white">{exp.role}</h5>
-                    <p className="text-xs text-slate-300 font-medium">{exp.company} • {exp.location}</p>
-                  </div>
-                  <span className="px-2.5 py-0.5 rounded-full bg-indigo-950/80 border border-indigo-500/40 text-indigo-300 text-[11px] font-mono font-bold">
-                    {exp.startDate} – {exp.endDate}
-                  </span>
-                </div>
-                <p className="text-xs text-slate-200 leading-relaxed">
-                  {exp.description || 'Focusing on internal audit reviews, operational technology risk assessments, control enhancements, and executive reporting.'}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Languages Card */}
-          <div className="bg-slate-950/50 backdrop-blur-xl border border-slate-700/60 rounded-3xl p-5 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
-            <div className="flex items-center gap-2 mb-3">
-              <Languages className="w-4 h-4 text-cyan-400" />
-              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-200 font-bold">Language Fluency</h4>
-            </div>
-            <div className="grid grid-cols-3 gap-2">
-              {profile.languages.map(l => (
-                <div key={l.name} className="p-2.5 rounded-xl bg-slate-900/60 border border-slate-700/60 text-center">
-                  <div className="text-xs font-bold text-white">{l.name}</div>
-                  <div className="text-[10px] text-cyan-300 font-mono truncate mt-0.5">{l.level.split(' ')[0]}</div>
-                </div>
-              ))}
-            </div>
+          <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
+            <button
+              onClick={() => setActivePage('sdlc')}
+              className="text-sky-400 hover:text-sky-300 flex items-center gap-1.5 font-semibold text-xs transition-colors cursor-pointer"
+            >
+              <span>Explore SDLC Lifecycle</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+            <span className="text-[10px] text-slate-500">v2.4.0-stable</span>
           </div>
         </div>
       </div>
