@@ -56,19 +56,15 @@ export const PortfolioProvider: React.FC<{ children: ReactNode }> = ({ children 
   const [error, setError] = useState<string | null>(null);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const [adminToken, setAdminToken] = useState<string | null>(null);
-  const [viewMode, setViewMode] = useState<'3d' | '2d'>('3d');
+  const [viewMode, setViewMode] = useState<'3d'>('3d');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isAdminOpen, setIsAdminOpen] = useState<boolean>(false);
   const [activePage, setActivePage] = useState<PageTab>('universe');
   const [cosmicTheme, setCosmicTheme] = useState<CosmicTheme>('cyan');
   const [is3DInteractiveOverlay, setIs3DInteractiveOverlay] = useState<boolean>(false);
 
-  // Restore saved view mode and cosmic theme preference
+  // Restore saved cosmic theme and active page preference
   useEffect(() => {
-    const savedMode = localStorage.getItem('bhm_view_mode') as '3d' | '2d' | null;
-    if (savedMode) {
-      setViewMode(savedMode);
-    }
     const savedTheme = localStorage.getItem('bhm_cosmic_theme') as CosmicTheme | null;
     if (savedTheme) {
       setCosmicTheme(savedTheme);
@@ -79,9 +75,9 @@ export const PortfolioProvider: React.FC<{ children: ReactNode }> = ({ children 
     }
   }, []);
 
-  const handleSetViewMode = (mode: '3d' | '2d') => {
-    setViewMode(mode);
-    localStorage.setItem('bhm_view_mode', mode);
+  const handleSetViewMode = (_mode: '3d' | '2d') => {
+    // 3D only as requested
+    setViewMode('3d');
   };
 
   const handleSetActivePage = (page: PageTab) => {
